@@ -11,8 +11,24 @@ window.onload = function(){
   board.addEventListener("click", function(evt){
     var e = evt.target; //get the target element that was clicked
     if(e.nodeName.toLowerCase() === "canvas"){ // only trigger canvas elements
-        alert("You clicked! " + e);;
-        console.log(e);
+        alert("You clicked square #" + e.id);;
+        console.log(e.id);
     }
   });
+
+  function rollTwoDie(){
+    var x = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+    var y = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+    return x + y;
+  };
+
+
+  var i=0;
+  while(i < 9){
+    alert(rollTwoDie());
+    i = i + 1;
+  }
 };
+
+
+
