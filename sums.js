@@ -1,24 +1,19 @@
 var combinations = [];
 
 function getPossSums(sum){
-  
-  var i = 1;
-  while (i<sum/2){
+  for (var i = 1; i < sum/2; i++){ 
     combinations.push([i, sum-i]);
-    getAllSubSums(i, sum-i);
-
-    i = i + 1;
+    getAllSubSums([i], sum-i);
   }
 
   return combinations;
 }
 
 
-function getAllSubSums(i, sum){
-  var j = 1;
-  while (j<sum/2){
-    combinations.push([j, sum-j, i]);
-    j = j + 1;
+function getAllSubSums(baggage, sum){
+  for (var j=1; j < sum/2; j++){
+    var new_array = baggage.concat(j, sum-j);
+    combinations.push(new_array);
   }
 
 }
@@ -28,6 +23,6 @@ function getAllSubSums(i, sum){
 
 
 
-print(getPossSums(5).join('\n'));
+print(getPossSums(7).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
