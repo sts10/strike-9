@@ -10,7 +10,7 @@ function getPossSums(sum){
       sub_arrays[k].push(i);
       combinations.push(sub_arrays[k]);
 
-      
+
       k = k + 1;
     }
     i = i + 1;
@@ -36,6 +36,6 @@ function getAllSubSums(sum){
 
 
 
-print(getPossSums(10).join('\n'));
+print(getPossSums(1000).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
