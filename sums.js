@@ -2,7 +2,7 @@ var possible_combinations = [];
 
 function isGameOver(roll, player_moves_remaining){
   var ways_to_fulfill_roll = getPossSums(roll);
-  if (containsAll(player_moves_remaining, ways_to_fulfill_roll)){
+  if (playerHasAMove(player_moves_remaining, ways_to_fulfill_roll)){
     return false; // game is not over
   } else {
     return true; // game is over
@@ -68,8 +68,8 @@ function isSubArray (subArray, array) {
 };
 
 
-// containsAll([2,3,4,5,10], [[1,7], [2,6], [2,3,5]]) => true
-function containsAll(player_moves_left, passing_moves){
+// playerHasAMove([2,3,4,5,10], [[1,7], [2,6], [2,3,5]]) => true
+function playerHasAMove(player_moves_left, passing_moves){
   for(var i = 0; i < passing_moves.length; i++) {
     var matches = 0; 
     for(var j = 0; j < passing_moves[i].length; j++) {  
@@ -87,10 +87,10 @@ function containsAll(player_moves_left, passing_moves){
 
 
 
-print(containsAll([2,3,4,5,10], [[1,7], [2,6], [2,10]]));
+// print(playerHasAMove([2,3,4,5,10], [[1,7], [2,6], [2,10]]));
 
 // print(getPossSums(10).join('\n'));
 
-// print(isGameOver(10, [1,3,4,5,6,7,8]));
+print(isGameOver(10, [1,3,4,5,6,7,8]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]

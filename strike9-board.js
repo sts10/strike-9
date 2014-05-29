@@ -87,7 +87,7 @@ window.onload = function(){
 
   function isGameOver(roll, player_moves_remaining){
     var ways_to_fulfill_roll = getPossSums(roll);
-    if (isSubArrayNoSort(player_moves_remaining, ways_to_fulfill_roll)){
+    if (playerHasAMove(player_moves_remaining, ways_to_fulfill_roll)){
       return false; // game is not over
     } else {
       return true; // game is over
@@ -153,13 +153,20 @@ window.onload = function(){
   };
 
 
-  function isSubArrayNoSort (subArray, array){
-    for(var i = 0; i < array.length; i++) {
-      if(subArray.toString() === array[i].toString()){
+  function playerHasAMove(player_moves_left, passing_moves){
+    for(var i = 0; i < passing_moves.length; i++) {
+      var matches = 0; 
+      for(var j = 0; j < passing_moves[i].length; j++) {  
+        // passing_moves[i][j] == 1
+        if (player_moves_left.indexOf(passing_moves[i][j]) != -1){
+          matches = matches + 1;
+        }
+      }
+      if (matches == passing_moves[i].length){
         return true;
       }
     }
-    return false;
+    return false; 
   };
 
 
