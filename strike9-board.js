@@ -1,16 +1,13 @@
 
 "use strict";
 window.onload = function(){
-  // alert("test");
 
   for(var i = 1; i<=9; i++){
     var canvas = document.getElementById(i.toString());
     var context = canvas.getContext("2d");
-    context.fillStyle = "#111";
+    context.fillStyle = "#ccc";
     context.fillRect(0,0,90,90);
   }
-
-
 
   var board_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   var player_moves_remaining = [1,2,3,4,5,6,7,8,9];
@@ -57,11 +54,13 @@ window.onload = function(){
             console.log("New roll is " + computer_roll);
             console.log("player_moves_remaining " + player_moves_remaining);
             if (isGameOver(computer_roll, player_moves_remaining)){
-              console.log("game over");
+              console.log("game over, no moves left");
             } else {
               possible_combinations = [];
               player_total = 0;
             }
+          } else if (player_total > computer_roll){
+            console.log("game over, too high");
           }
         }
     }
@@ -102,7 +101,7 @@ window.onload = function(){
       addAllSubSums([i], sum-i);
     }
 
-    possible_combinations.push(sum); // can just play the number itself 
+    possible_combinations.push([sum]); // can just play the number itself 
 
     return possible_combinations;
   };

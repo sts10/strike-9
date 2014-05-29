@@ -17,7 +17,7 @@ function getPossSums(sum){
     addAllSubSums([i], sum-i);
   }
 
-  possible_combinations.push(sum); // can just play the number itself 
+  possible_combinations.push([sum]); // can just play the number itself 
 
   return possible_combinations;
 };
@@ -87,10 +87,10 @@ function playerHasAMove(player_moves_left, passing_moves){
 
 
 
-// print(playerHasAMove([2,3,4,5,10], [[1,7], [2,6], [2,10]]));
+// print(playerHasAMove([3,4,5,10], [[1,2], [3]]));
 
 // print(getPossSums(10).join('\n'));
 
-print(isGameOver(10, [1,3,4,5,6,7,8]));
+print(isGameOver(3, [1,3,4,5,6,7,8]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
