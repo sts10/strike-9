@@ -1,18 +1,12 @@
+var combinations = [];
+
 function getPossSums(sum){
-  combinations = [];
+  
   var i = 1;
   while (i<sum/2){
     combinations.push([i, sum-i]);
-    var sub_arrays = getAllSubSums(sum-i);
+    getAllSubSums(i, sum-i);
 
-    var k = 0;
-    while (k<sub_arrays.length/2){
-      sub_arrays[k].push(i);
-      combinations.push(sub_arrays[k]);
-
-
-      k = k + 1;
-    }
     i = i + 1;
   }
 
@@ -20,15 +14,13 @@ function getPossSums(sum){
 }
 
 
-function getAllSubSums(sum){
-  sub_combinations = [];
+function getAllSubSums(i, sum){
   var j = 1;
   while (j<sum/2){
-    sub_combinations.push([j, sum-j]);
+    combinations.push([j, sum-j, i]);
     j = j + 1;
   }
 
-  return sub_combinations;
 }
 
 
@@ -36,6 +28,6 @@ function getAllSubSums(sum){
 
 
 
-print(getPossSums(1000).join('\n'));
+print(getPossSums(5).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
