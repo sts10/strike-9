@@ -2,7 +2,7 @@ var possible_combinations = [];
 
 function isGameOver(roll, player_moves_remaining){
   var ways_to_fulfill_roll = getPossSums(roll);
-  if (isSubArrayNoSort(player_moves_remaining, ways_to_fulfill_roll)){
+  if (containsAll(player_moves_remaining, ways_to_fulfill_roll)){
     return false; // game is not over
   } else {
     return true; // game is over
@@ -77,12 +77,36 @@ function isSubArrayNoSort (subArray, array){
   return false;
 };
 
-// print(sortArray([1,90,4,189391,0,2]));
+function containsAll(subArray, array){
+  var array = flatten(array);
+  for(var i = 0; i < subArray.length; i++) {
+    if (array.indexOf(subArray[i]) == -1) {
+      print("subArray[i] is " + subArray[i]);
+      return false;
+    }
+  }
+  return true;
+}
 
-// print(isSubArray([1,2], [[2,1],[3,4]]));
+function flatten(array) {
+  var result = [], self = arguments.callee;
+  array.forEach(function(item) {
+    Array.prototype.push.apply(
+      result,
+      Array.isArray(item) ? self(item) : [item]
+    );
+  });
+  return result;
+};
 
-print(getPossSums(10).join('\n'));
+// var myArray = [[1,2],[4,6]]; 
+// print(myArray.join('\n'));
+// print(flatten(myArray).join('\n'));
 
-print(isGameOver(10, [1,3,4,5,6,7,8]));
+print(containsAll([4,6,3], [[1,2],[4,6]]));
+
+// print(getPossSums(10).join('\n'));
+
+// print(isGameOver(10, [1,3,4,5,6,7,8]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
