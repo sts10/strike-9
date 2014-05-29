@@ -1,8 +1,17 @@
 var possible_combinations = [];
 
+function isGameOver(roll, player_moves_remaining){
+  var ways_to_fulfill_roll = getPossSums(roll);
+  if (isSubArrayNoSort(player_moves_remaining, ways_to_fulfill_roll)){
+    return false; // game is not over
+  } else {
+    return true; // game is over
+  }
+}
+
+
 function getPossSums(sum){
   
-
   for (var i = 1; i < sum/2; i++){ 
     possible_combinations.push([i, sum-i]);
     addAllSubSums([i], sum-i);
@@ -58,10 +67,22 @@ function isSubArray (subArray, array) {
   return false;
 };
 
+
+function isSubArrayNoSort (subArray, array){
+  for(var i = 0; i < array.length; i++) {
+    if(subArray.toString() === array[i].toString()){
+      return true;
+    }
+  }
+  return false;
+};
+
 // print(sortArray([1,90,4,189391,0,2]));
 
 // print(isSubArray([1,2], [[2,1],[3,4]]));
 
-print(getPossSums(10).join('\n'));
+// print(getPossSums(10).join('\n'));
+
+print(isGameOver(10, [1,2,3,4]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
