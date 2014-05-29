@@ -31,9 +31,7 @@ window.onload = function(){
         var box_index = e.id - 1;
 
         if (board_array[box_index] == 1) {
-            console.log("error!");
-        // } else if (){
-          // console.log("you lost");
+            console.log("You already have chosen that box!");
         } else {
           context.fillStyle = "#fff";
           context.fillRect(0,0,90,90);
