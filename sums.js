@@ -1,16 +1,16 @@
-var combinations = [];
+var possible_combinations = [];
 
 function getPossSums(sum){
   
 
   for (var i = 1; i < sum/2; i++){ 
-    combinations.push([i, sum-i]);
+    possible_combinations.push([i, sum-i]);
     addAllSubSums([i], sum-i);
   }
 
-  combinations.push(sum); // can just play the number itself 
+  possible_combinations.push(sum); // can just play the number itself 
 
-  return combinations;
+  return possible_combinations;
 };
 
 
@@ -20,11 +20,11 @@ function addAllSubSums(baggage, sum){
     if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
       // add j and sum-j back to baggage
       var new_array = baggage.concat(j, sum-j);
-      // and push all of that to combinations
+      // and push all of that to possible_combinations
 
-      // if new_array is NOT a subArray of combinations yet... 
-      if (!isSubArray(new_array,combinations)){
-        combinations.push(new_array);
+      // if new_array is NOT a subArray of possible_combinations yet... 
+      if (!isSubArray(new_array,possible_combinations)){
+        possible_combinations.push(new_array);
       }
 
       var new_baggage = baggage.concat(j);
@@ -62,6 +62,6 @@ function isSubArray (subArray, array) {
 
 // print(isSubArray([1,2], [[2,1],[3,4]]));
 
-print(getPossSums(11).join('\n'));
+print(getPossSums(10).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
