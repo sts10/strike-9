@@ -12,8 +12,11 @@ function getPossSums(sum){
 
 function getAllSubSums(baggage, sum){
   for (var j=1; j < sum/2; j++){
-    var new_array = baggage.concat(j, sum-j);
-    combinations.push(new_array);
+    // if j is not in baggage and sum-j is not in baggage
+      // add j and sum-j back to baggage
+      var new_array = baggage.concat(j, sum-j);
+      // and push all of that to combinations
+      combinations.push(new_array);
   }
 
 }
