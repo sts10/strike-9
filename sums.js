@@ -5,6 +5,7 @@ function getPossSums(sum){
     combinations.push([i, sum-i]);
     getAllSubSums([i], sum-i);
   }
+  combinations.push(sum); // can just play the number itself 
 
   return combinations;
 }
