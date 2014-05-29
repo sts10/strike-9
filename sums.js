@@ -17,6 +17,9 @@ function getAllSubSums(baggage, sum){
       var new_array = baggage.concat(j, sum-j);
       // and push all of that to combinations
       combinations.push(new_array);
+
+      var new_baggage = baggage.concat(j);
+      getAllSubSums(new_baggage, sum-j);
   }
 
 }
@@ -26,6 +29,6 @@ function getAllSubSums(baggage, sum){
 
 
 
-print(getPossSums(7).join('\n'));
+print(getPossSums(5).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
