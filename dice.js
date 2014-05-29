@@ -1,3 +1,16 @@
+
+function rollTwoDie(){
+  var x = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+  var y = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+  return x + y;
+};
+
+
+
+
+
+
+
 var dbl = 0;
 function rolldice() {
     var x = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
