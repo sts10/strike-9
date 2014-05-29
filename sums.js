@@ -11,7 +11,7 @@ function getPossSums(sum){
   combinations.push(sum); // can just play the number itself 
 
   return combinations;
-}
+};
 
 
 function addAllSubSums(baggage, sum){
@@ -32,19 +32,19 @@ function addAllSubSums(baggage, sum){
     }
   }
 
-}
+};
 
 
 function sortArray(array){
   return array.sort(function(a, b){return a-b});
-}
+};
 
 function sortAllSubArrays(array){
   for(var i = 0; i < array.length; i++){
     array[i] = sortArray(array[i]);
   }
   return array;
-}
+};
 
 function isSubArray (subArray, array) {
   subArray = sortArray(subArray);
@@ -56,12 +56,12 @@ function isSubArray (subArray, array) {
     }
   }
   return false;
-}
+};
 
 // print(sortArray([1,90,4,189391,0,2]));
 
 // print(isSubArray([1,2], [[2,1],[3,4]]));
 
-print(getPossSums(7).join('\n'));
+print(getPossSums(11).join('\n'));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
