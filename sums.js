@@ -68,42 +68,26 @@ function isSubArray (subArray, array) {
 };
 
 
-function isSubArrayNoSort (subArray, array){
-  for(var i = 0; i < array.length; i++) {
-    if(subArray.toString() === array[i].toString()){
+// containsAll([2,3,4,5,10], [[1,7], [2,6], [2,3,5]]) => true
+function containsAll(player_moves_left, passing_moves){
+  for(var i = 0; i < passing_moves.length; i++) {
+    var matches = 0; 
+    for(var j = 0; j < passing_moves[i].length; j++) {  
+      // passing_moves[i][j] == 1
+      if (player_moves_left.indexOf(passing_moves[i][j]) != -1){
+        matches = matches + 1;
+      }
+    }
+    if (matches == passing_moves[i].length){
       return true;
     }
   }
-  return false;
-};
-
-function containsAll(subArray, array){
-  var array = flatten(array);
-  for(var i = 0; i < subArray.length; i++) {
-    if (array.indexOf(subArray[i]) == -1) {
-      print("subArray[i] is " + subArray[i]);
-      return false;
-    }
-  }
-  return true;
+  return false; 
 }
 
-function flatten(array) {
-  var result = [], self = arguments.callee;
-  array.forEach(function(item) {
-    Array.prototype.push.apply(
-      result,
-      Array.isArray(item) ? self(item) : [item]
-    );
-  });
-  return result;
-};
 
-// var myArray = [[1,2],[4,6]]; 
-// print(myArray.join('\n'));
-// print(flatten(myArray).join('\n'));
 
-print(containsAll([4,6,3], [[1,2],[4,6]]));
+print(containsAll([2,3,4,5,10], [[1,7], [2,6], [2,10]]));
 
 // print(getPossSums(10).join('\n'));
 
