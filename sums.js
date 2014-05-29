@@ -5,7 +5,7 @@ function getPossSums(sum){
 
   for (var i = 1; i < sum/2; i++){ 
     combinations.push([i, sum-i]);
-    getAllSubSums([i], sum-i);
+    addAllSubSums([i], sum-i);
   }
 
   combinations.push(sum); // can just play the number itself 
@@ -14,7 +14,7 @@ function getPossSums(sum){
 }
 
 
-function getAllSubSums(baggage, sum){
+function addAllSubSums(baggage, sum){
   for (var j=1; j < sum/2; j++){
     // if j is not in baggage and sum-j is not in baggage
     if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
@@ -28,7 +28,7 @@ function getAllSubSums(baggage, sum){
       }
 
       var new_baggage = baggage.concat(j);
-      getAllSubSums(new_baggage, sum-j);
+      addAllSubSums(new_baggage, sum-j);
     }
   }
 
