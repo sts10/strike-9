@@ -14,30 +14,42 @@
       margin: 0;
       padding: 0;
       position: relative;
+      font-family: helvetica, arial;
     }
     div, canvas {
       margin: 0;
       padding: 0;
     }
 
-    #messageBox {
-      margin: 30px auto 0 auto;
+    #title{
+      margin: 25px auto 0 auto;
       text-align: center;
-      font-family: helvetica, arial;
+      width: 270px;
+      font-size: 35px;
+    }
+
+    #messageBox {
+      margin: 20px auto 0 auto;
+      text-align: center;
       width: 270px;
       height: 85px;
       font-size: 25px;
-      
+    
     }
 
     #board {
       margin: 10px auto 0 auto;
-      /*margin-top: 50px;*/
       width: 100%;
       max-width: 278px;
       position: relative;
     }
 
+    #rules{
+      margin: 45px auto 0 auto;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
 
     .hide {
       background-color: white; /* make invisible */
@@ -45,15 +57,13 @@
   </style>
 </head>
 <body>
-<!--
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
--->
-
-
   <script src="strike9-board.js"></script>
 
-  <div id="messageBox"></div>
+  <div id="title">
+    Strike 9
+  </div>
 
+  <div id="messageBox"></div>
 
   <div id="board">
     <div id="row1">
@@ -73,6 +83,14 @@
     </div>
   </div>
 
+  <div id="rules">
+    How to Play:
+    <ul>  
+      <li>Click the numbered squares to sum up to the computer's dice roll.</li>
+      <li>Once a numbered square is used, it can't be used a game.</li>
+      <li>Win by eliminating all numbered squares.</li>
+    </ul>
+  </div>
 
 </body>
 </html>

@@ -40,41 +40,39 @@ window.onload = function(){
         if (board_array[box_index] == 1) {
             console.log("You already have chosen that box!");
         } else {
+          // make box white
           context.fillStyle = "#fff";
           context.fillRect(0,0,90,90);
-          board_array[box_index] = 1;
 
-          console.log("box_index is "  +  box_index);
-
+          // update both tracking arrays
+          board_array[box_index] = 1; 
           removeElement(player_moves_remaining, e.id);
-          console.log("player_moves_remaining " + player_moves_remaining);
 
+          // update player_total for this turn
           player_total = player_total + box_index + 1;
-          console.log("Player total is " + player_total);
 
-
+          // if on this turn the player successfully summed to the dice roll
           if (player_total == computer_roll){
+
+            //check if player has won
             if(player_moves_remaining === []){
               sendMessage("You won!");
-            } else { //still playing
 
+            } else { //still playing
               // re-roll dice. 
               computer_roll = rollTwoDie();
-              console.log("New roll is " + computer_roll);
 
-              console.log("player_moves_remaining " + player_moves_remaining);
-
+              // with new dice roll, we can already figure out if the game is over
               if (isGameOver(computer_roll, player_moves_remaining)){
-                console.log("game over, no moves left");
                 sendMessage("New roll is " + computer_roll + "...<br>Game over, no moves left");
-              } else {
+              } else { // if there exists a way to make the roll's sum...
                 sendMessage("Awesome!<br>New roll is " + computer_roll);
-                possible_combinations = [];
+                // reset 
+                possible_combinations = []; 
                 player_total = 0;
               }
             }
-          } else if (player_total > computer_roll){
-            console.log("game over, too high");
+          } else if (player_total > computer_roll){  // if player went above the dice total...
             sendMessage("You exceeded the computer's roll.<br>Game Over");
           }
         }
@@ -175,7 +173,6 @@ window.onload = function(){
     for(var i = 0; i < passing_moves.length; i++) {
       var matches = 0; 
       for(var j = 0; j < passing_moves[i].length; j++) {  
-        // passing_moves[i][j] == 1
         if (player_moves_left.indexOf(passing_moves[i][j]) != -1){
           matches = matches + 1;
         }
@@ -186,9 +183,6 @@ window.onload = function(){
     }
     return false; 
   };
-
-
-
 
 
 };
