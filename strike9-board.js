@@ -40,8 +40,8 @@ window.onload = function(){
 
             //check if player has won
             if(player_moves_remaining === []){
-              sendMessage("You won!");
-
+              alert("Oh hey, You won!");
+              resetGame();
             } else { //still playing
               // re-roll dice. 
               computer_roll = rollTwoDie();
