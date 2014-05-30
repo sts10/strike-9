@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <title>Drawing the Boxes</title>
   <style type="text/css">
-    .instruct {
-      color: blue;
+    #board {
+      margin: 0 auto;
+    }
+
+    #messageBox {
+      margin: 0 auto;
+      text-align: center;
+      width: 270px;
+      font-size: 25px;
+      
     }
 
     .hide {
@@ -22,7 +30,7 @@
   <script src="strike9-board.js"></script>
 
 
-  <span id="board">
+  <div id="board">
     <div id="row1">
       <canvas id="1" width=90 height=90>1</canvas>
       <canvas id="2" width=90 height=90></canvas>
@@ -38,7 +46,9 @@
       <canvas id="8" width=90 height=90></canvas>
       <canvas id="9" width=90 height=90></canvas>
     </div>
-  </span>
+  </div>
+
+  <div id="messageBox"></div>
 
 </body>
 </html>

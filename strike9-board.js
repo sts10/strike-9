@@ -5,8 +5,14 @@ window.onload = function(){
   for(var i = 1; i<=9; i++){
     var canvas = document.getElementById(i.toString());
     var context = canvas.getContext("2d");
-    context.fillStyle = "#ccc";
+    context.fillStyle = "#aaa";
     context.fillRect(0,0,90,90);
+
+    context.textAlign= "center";
+    context.textBaseline = 'middle';
+    context.fillStyle = "#000";
+    context.font="25px Georgia";
+    context.fillText(i,45,45);
   }
 
   var board_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -16,6 +22,7 @@ window.onload = function(){
 
   var computer_roll = rollTwoDie();
   console.log("Computer rolls a " + computer_roll);
+  sendMessage("Computer rolls a " + computer_roll);
 
   var possible_combinations = [];
 
@@ -50,15 +57,20 @@ window.onload = function(){
             // re-roll dice. 
             computer_roll = rollTwoDie();
             console.log("New roll is " + computer_roll);
+            
+
             console.log("player_moves_remaining " + player_moves_remaining);
             if (isGameOver(computer_roll, player_moves_remaining)){
               console.log("game over, no moves left");
+              sendMessage("New roll is " + computer_roll + "...<br>Game over, no moves left");
             } else {
+              sendMessage("Awesome!<br>New roll is " + computer_roll);
               possible_combinations = [];
               player_total = 0;
             }
           } else if (player_total > computer_roll){
             console.log("game over, too high");
+            sendMessage("You exceed the computer's roll. Game Over");
           }
         }
     }
@@ -79,6 +91,10 @@ window.onload = function(){
     } 
   };
 
+  function sendMessage(mess){
+    var messageBox = document.getElementById("messageBox");
+    messageBox.innerHTML = mess;
+  };
 
 
 
@@ -165,6 +181,8 @@ window.onload = function(){
     }
     return false; 
   };
+
+
 
 
 
