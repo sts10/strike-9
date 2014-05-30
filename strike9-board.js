@@ -39,7 +39,10 @@ window.onload = function(){
           if (player_total == computer_roll){
 
             //check if player has won
-            if(player_moves_remaining === []){
+            
+            console.log(board_array);
+
+            if (board_array.indexOf(0) == -1){    // if(player_moves_remaining === []){
               alert("Oh hey, You won!");
               resetGame();
             } else { //still playing
