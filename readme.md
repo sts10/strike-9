@@ -1,4 +1,6 @@
-GAME #1  -- STRIKE NINE (one player vs. computer)
+STRIKE NINE (one player vs. computer)
+
+A JavaScript implementation of "Strike 9". 
 
 Description:
 
@@ -17,6 +19,3 @@ PLAYER WINS if he or she removes all their numbers from the board.
 
 PLAYER LOSES if the computer rolls a total that the player cannot remove with the numbers remaining on their board.
 
-I like this game because there is a simple, straightforward logic to it, and there are lots of ways to incorporate buttons, simple event handlers, toggles to change whether a number is still available for play or not, etc. that force the developer to learn basic DOM manipulation techniques.
-
-If you want to think about the problem before showing up to the meetup that is ok but certainly not necessary. The point of this meetup is to sit down in groups and learn what you need to learn to attack the problem(s) at hand then and there!  
