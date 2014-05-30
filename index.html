@@ -4,17 +4,40 @@
   <meta charset="UTF-8">
   <title>Drawing the Boxes</title>
   <style type="text/css">
-    #board {
-      margin: 0 auto;
+
+    /* Reset box sizing so CSS becomes more managable */
+    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+    /* Reset containers */
+    body,
+    html{
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    div, canvas {
+      margin: 0;
+      padding: 0;
     }
 
     #messageBox {
-      margin: 0 auto;
+      margin: 30px auto 0 auto;
       text-align: center;
+      font-family: helvetica, arial;
       width: 270px;
+      height: 85px;
       font-size: 25px;
       
     }
+
+    #board {
+      margin: 10px auto 0 auto;
+      /*margin-top: 50px;*/
+      width: 100%;
+      max-width: 278px;
+      position: relative;
+    }
+
 
     .hide {
       background-color: white; /* make invisible */
@@ -29,10 +52,12 @@
 
   <script src="strike9-board.js"></script>
 
+  <div id="messageBox"></div>
+
 
   <div id="board">
     <div id="row1">
-      <canvas id="1" width=90 height=90>1</canvas>
+      <canvas id="1" width=90 height=90></canvas>
       <canvas id="2" width=90 height=90></canvas>
       <canvas id="3" width=90 height=90></canvas>
     </div>
@@ -48,7 +73,6 @@
     </div>
   </div>
 
-  <div id="messageBox"></div>
 
 </body>
 </html>

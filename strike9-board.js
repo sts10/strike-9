@@ -11,7 +11,7 @@ window.onload = function(){
     context.textAlign= "center";
     context.textBaseline = 'middle';
     context.fillStyle = "#000";
-    context.font="25px Georgia";
+    context.font="25px Helvetica";
     context.fillText(i,45,45);
   }
 
@@ -54,23 +54,28 @@ window.onload = function(){
 
 
           if (player_total == computer_roll){
-            // re-roll dice. 
-            computer_roll = rollTwoDie();
-            console.log("New roll is " + computer_roll);
-            
+            if(player_moves_remaining === []){
+              sendMessage("You won!");
+            } else { //still playing
 
-            console.log("player_moves_remaining " + player_moves_remaining);
-            if (isGameOver(computer_roll, player_moves_remaining)){
-              console.log("game over, no moves left");
-              sendMessage("New roll is " + computer_roll + "...<br>Game over, no moves left");
-            } else {
-              sendMessage("Awesome!<br>New roll is " + computer_roll);
-              possible_combinations = [];
-              player_total = 0;
+              // re-roll dice. 
+              computer_roll = rollTwoDie();
+              console.log("New roll is " + computer_roll);
+
+              console.log("player_moves_remaining " + player_moves_remaining);
+
+              if (isGameOver(computer_roll, player_moves_remaining)){
+                console.log("game over, no moves left");
+                sendMessage("New roll is " + computer_roll + "...<br>Game over, no moves left");
+              } else {
+                sendMessage("Awesome!<br>New roll is " + computer_roll);
+                possible_combinations = [];
+                player_total = 0;
+              }
             }
           } else if (player_total > computer_roll){
             console.log("game over, too high");
-            sendMessage("You exceed the computer's roll. Game Over");
+            sendMessage("You exceeded the computer's roll.<br>Game Over");
           }
         }
     }
