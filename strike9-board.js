@@ -51,7 +51,8 @@ window.onload = function(){
                 alert("Computer's next roll is " + computer_roll + "...Game over :(");
                 resetGame();
               } else { // if there exists a way to make the roll's sum...
-                sendMessage(randPraise() + "<br>New roll is " + computer_roll);
+                sendMessage(randPraise()); // + "<br>New roll is " + computer_roll);
+                postDiceRoll(computer_roll);
                 // reset for new roll, same game
                 possible_combinations = []; 
                 player_total = 0;
@@ -84,6 +85,11 @@ window.onload = function(){
     var messageBox = document.getElementById("messageBox");
     messageBox.innerHTML = mess;
   };
+
+  function postDiceRoll(num){
+    var diceRollBox = document.getElementById("diceRoll");
+    diceRollBox.innerHTML = num;
+  }
 
   function randPraise(){
     var praise = ["Awesome!", "Good job!", "Knew you could do it!", "Sweet!", "You got this!", "Again! Again!", "Keep it up!", "Keep going!", "Easy, right?"];
@@ -181,13 +187,13 @@ window.onload = function(){
     for(var i = 1; i<=9; i++){
       var canvas = document.getElementById(i.toString());
       var context = canvas.getContext("2d");
-      context.fillStyle = "#aaa";
+      context.fillStyle = "#000";
       context.fillRect(0,0,90,90);
 
       context.textAlign= "center";
       context.textBaseline = 'middle';
-      context.fillStyle = "#000";
-      context.font="25px Helvetica";
+      context.fillStyle = "#fff";
+      context.font="30px 'Press Start 2P'";
       context.fillText(i,45,45);
     }
 
@@ -195,9 +201,11 @@ window.onload = function(){
     player_moves_remaining = [1,2,3,4,5,6,7,8,9];
 
     player_total = 0;
+    sendMessage('New Game');
 
     computer_roll = rollTwoDie();
-    sendMessage("Computer rolls a " + computer_roll);
+    // sendMessage("Computer rolls a " + computer_roll);
+    postDiceRoll(computer_roll);
 
     possible_combinations = [];
   }

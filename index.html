@@ -3,58 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Strike 9</title>
-  <style type="text/css">
-
-    /* Reset box sizing so CSS becomes more managable */
-    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
-    /* Reset containers */
-    body,
-    html{
-      margin: 0;
-      padding: 0;
-      position: relative;
-      font-family: helvetica, arial;
-    }
-    div, canvas {
-      margin: 0;
-      padding: 0;
-    }
-
-    #title{
-      margin: 25px auto 0 auto;
-      text-align: center;
-      width: 270px;
-      font-size: 35px;
-    }
-
-    #messageBox {
-      margin: 20px auto 0 auto;
-      text-align: center;
-      width: 270px;
-      height: 85px;
-      font-size: 25px;
-    
-    }
-
-    #board {
-      margin: 10px auto 0 auto;
-      width: 100%;
-      max-width: 278px;
-      position: relative;
-    }
-
-    #rules{
-      margin: 45px auto 50px auto;
-      width: 100%;
-      max-width: 400px;
-      position: relative;
-    }
-
-    .hide {
-      background-color: white; /* make invisible */
-    }
-  </style>
+  <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
   <script src="strike9-board.js"></script>
@@ -63,20 +13,24 @@
     Strike 9
   </div>
 
-  <div id="messageBox"></div>
+  <div id="header">
+    <div id="messageBox"></div>
+    <div id="computer-rolls">Computer rolls a...</div>
+    <div id="diceRoll"></div>
+  </div>
 
   <div id="board">
-    <div id="row1">
+    <div class="row" id="row1">
       <canvas id="1" width=90 height=90></canvas>
       <canvas id="2" width=90 height=90></canvas>
       <canvas id="3" width=90 height=90></canvas>
     </div>
-    <div id="row2">
+    <div class="row" id="row2">
       <canvas id="4" width=90 height=90></canvas>
       <canvas id="5" width=90 height=90></canvas>
       <canvas id="6" width=90 height=90></canvas>
     </div>
-    <div id="row3">
+    <div class="row" id="row3">
       <canvas id="7" width=90 height=90></canvas>
       <canvas id="8" width=90 height=90></canvas>
       <canvas id="9" width=90 height=90></canvas>
@@ -84,14 +38,15 @@
   </div>
 
   <div id="rules">
-    How to Play:
+    <span style="font-family: 'Press Start 2P', helvetica">How to Play:</span>
     <ul>  
       <li>Click the numbered squares to sum up to the computer's dice roll.</li>
       <li>Once a numbered square is used, it cannot be used again.</li>
       <li>Once you make a sum, the computer will roll again.</li>
       <li>Win by eliminating all numbered squares.</li>
     </ul>
-    <a href="https://github.com/sts10/strike-9" target="_blank">View on GitHub</a>
+    <br>
+    <a href="https://github.com/sts10/strike-9" target="_blank" class="github">View on GitHub</a>
   </div>
 
 </body>

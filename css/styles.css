@@ -1,0 +1,100 @@
+
+/* Reset box sizing so CSS becomes more managable */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* Reset containers */
+body,
+html{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: helvetica, arial;
+}
+div, canvas {
+  margin: 0;
+  padding: 0;
+}
+
+#title{
+  margin: 25px auto 0 auto;
+  text-align: center;
+  width: 400px;
+  font-size: 35px;
+  font-family: 'Press Start 2P', helvetica, arial;
+
+}
+
+#header{
+  position: relative;
+  text-align: center;
+  font-family: 'Press Start 2P', helvetica, arial;
+}
+
+#messageBox {
+  margin: 20px auto 0 auto;
+  text-align: center;
+  width: 320px;
+  height: 53px;
+  font-size: 22px;
+}
+
+#computer-rolls {
+  margin: 0px auto 0 auto;
+  text-align: center;
+  width: 300px;
+  height: 35px;
+  font-size: 15px;
+}
+
+#diceRoll {
+  margin: 0 auto;
+  text-align: center;
+  display: inline;
+  padding: 15px;
+  /*height: 45px;*/
+  font-size: 45px;
+  font-family: 'Press Start 2P', helvetica, arial;
+  /*border: 4px dotted black;*/
+}
+
+
+#board {
+  margin: 10px auto 0 auto;
+  width: 100%;
+  max-width: 408px;
+  position: relative;
+}
+
+canvas {
+  cursor: pointer;
+}
+
+.row {
+  margin: 0 auto;
+  width: 280px;
+}
+
+#rules{
+  margin: 45px auto 50px auto;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.github {
+  color: white;
+  background-color: black;
+  border: 2px black solid;
+  font-family: 'Press Start 2P', helvetica;
+  padding: 9px;
+  text-decoration: none;
+}
+
+.github:hover{
+  color: black;
+  background-color: white;
+}
+
+.hide {
+  background-color: white; /* make invisible */
+}
