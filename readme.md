@@ -10,7 +10,7 @@ Description:
 
 3) The player then may remove ANY combination of one or more numbers from his or her board that add up to TOTAL. 
 
-For example, if computer rolls a TOTAL of  9, player can choose to remove any of the following combinations:  [9 ] , [1 ,8], [2,7], [1,2,6], [2,3,4], etc.  
+For example, if computer rolls a TOTAL of  9, player can choose to remove any of the following combinations:  [9], [1,8], [2,7], [1,2,6], [2,3,4], etc.  
 4) The numbers so chosen are then permanently removed from play. 
 
 5) Once this is done, the computer rolls again and play continues.
