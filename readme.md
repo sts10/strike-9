@@ -1,6 +1,8 @@
-# STRIKE NINE (one player vs. computer)
+## STRIKE NINE (one player vs. computer)
 
-## A JavaScript implementation of "Strike 9". 
+### A JavaScript implementation of "Strike 9". 
+
+[View live demo](http://samschlinkert.com/strike9/)
 
 Description:
 
