@@ -38,11 +38,8 @@ window.onload = function(){
           // if on this turn the player successfully summed to the dice roll
           if (player_total == computer_roll){
 
-            //check if player has won
-            
-            console.log(board_array);
-
-            if (board_array.indexOf(0) == -1){    // if(player_moves_remaining === []){
+            // check if player has won
+            if (board_array.indexOf(0) == -1){   
               alert("Oh hey, You won!");
               resetGame();
             } else { //still playing
