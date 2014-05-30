@@ -48,10 +48,10 @@ window.onload = function(){
 
               // with new dice roll, we can already figure out if the game is over
               if (isGameOver(computer_roll, player_moves_remaining)){
-                alert("New roll is " + computer_roll + "...Game over, no moves left");
+                alert("Computer's next roll is " + computer_roll + "...Game over :(");
                 resetGame();
               } else { // if there exists a way to make the roll's sum...
-                sendMessage("Awesome!<br>New roll is " + computer_roll);
+                sendMessage(randPraise() + "<br>New roll is " + computer_roll);
                 // reset for new roll, same game
                 possible_combinations = []; 
                 player_total = 0;
@@ -83,6 +83,12 @@ window.onload = function(){
   function sendMessage(mess){
     var messageBox = document.getElementById("messageBox");
     messageBox.innerHTML = mess;
+  };
+
+  function randPraise(){
+    var praise = ["Awesome!", "Good job!", "Knew you could do it!", "Sweet!", "You got this!", "Again! Again!", "Keep it up!", "Keep going!", "Easy, right?"];
+    var rand = Math.floor(Math.random() * (praise.length));
+    return praise[rand];
   };
 
 
