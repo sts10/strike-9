@@ -4,7 +4,9 @@
 
 [View live demo](http://samschlinkert.com/strike9/)
 
-Description:
+[Blog post about some of the game-over array checking](http://sts10.github.io/blog/2014/05/30/strike-9-game/)
+
+Rules of the Game:
 
 1) The player has a game board with all numbers from 1-9 visible (inclusive). 
 
