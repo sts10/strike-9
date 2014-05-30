@@ -1,3 +1,9 @@
+
+// THIS IS A JUNK FILE JUST FOR NOTE PURPOSES
+
+
+
+
 var possible_combinations = [];
 
 function isGameOver(roll, player_moves_remaining){
