@@ -1,30 +1,14 @@
 
 "use strict";
 window.onload = function(){
-
-  for(var i = 1; i<=9; i++){
-    var canvas = document.getElementById(i.toString());
-    var context = canvas.getContext("2d");
-    context.fillStyle = "#aaa";
-    context.fillRect(0,0,90,90);
-
-    context.textAlign= "center";
-    context.textBaseline = 'middle';
-    context.fillStyle = "#000";
-    context.font="25px Helvetica";
-    context.fillText(i,45,45);
-  }
-
   var board_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   var player_moves_remaining = [1,2,3,4,5,6,7,8,9];
+  var possible_combinations = [];
 
+  var computer_roll = 0;
   var player_total = 0;
 
-  var computer_roll = rollTwoDie();
-  console.log("Computer rolls a " + computer_roll);
-  sendMessage("Computer rolls a " + computer_roll);
-
-  var possible_combinations = [];
+  resetGame();
 
  
   var board = document.getElementById("board");
@@ -64,16 +48,18 @@ window.onload = function(){
 
               // with new dice roll, we can already figure out if the game is over
               if (isGameOver(computer_roll, player_moves_remaining)){
-                sendMessage("New roll is " + computer_roll + "...<br>Game over, no moves left");
+                alert("New roll is " + computer_roll + "...Game over, no moves left");
+                resetGame();
               } else { // if there exists a way to make the roll's sum...
                 sendMessage("Awesome!<br>New roll is " + computer_roll);
-                // reset 
+                // reset for new roll, same game
                 possible_combinations = []; 
                 player_total = 0;
               }
             }
           } else if (player_total > computer_roll){  // if player went above the dice total...
-            sendMessage("You exceeded the computer's roll.<br>Game Over");
+            alert("You exceeded the computer's roll...Game Over");
+            resetGame();
           }
         }
     }
@@ -184,5 +170,30 @@ window.onload = function(){
     return false; 
   };
 
+
+  function resetGame(){
+    for(var i = 1; i<=9; i++){
+      var canvas = document.getElementById(i.toString());
+      var context = canvas.getContext("2d");
+      context.fillStyle = "#aaa";
+      context.fillRect(0,0,90,90);
+
+      context.textAlign= "center";
+      context.textBaseline = 'middle';
+      context.fillStyle = "#000";
+      context.font="25px Helvetica";
+      context.fillText(i,45,45);
+    }
+
+    board_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    player_moves_remaining = [1,2,3,4,5,6,7,8,9];
+
+    player_total = 0;
+
+    computer_roll = rollTwoDie();
+    sendMessage("Computer rolls a " + computer_roll);
+
+    possible_combinations = [];
+  }
 
 };
