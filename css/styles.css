@@ -18,10 +18,12 @@ div, canvas {
 #title{
   margin: 25px auto 0 auto;
   text-align: center;
-  width: 400px;
+  width: 320px;
   font-size: 35px;
   font-family: 'Press Start 2P', helvetica, arial;
-
+  color: white;
+  background-color: black;
+  padding: 15px;
 }
 
 #header{
@@ -77,6 +79,16 @@ canvas {
   width: 100%;
   max-width: 400px;
   position: relative;
+}
+
+#rules ul {
+  list-style-type:square;
+}
+
+#github {
+  margin: 0px auto 45px auto;
+  text-align: center;
+  width: 300px;
 }
 
 .github {
