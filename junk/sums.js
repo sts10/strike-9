@@ -30,8 +30,7 @@ function getPossSums(sum){
 
 
 function addAllSubSums(sum, baggage){
-  // baggage = typeof baggage !== 'undefined' ? baggage : [];
-
+  // if baggage argument is undefined, make it []
   if (typeof baggage == 'undefined'){
     baggage = [];
     var firstRun = true;
@@ -58,7 +57,6 @@ function addAllSubSums(sum, baggage){
   }
 
   return possible_combinations;
-
 };
 
 

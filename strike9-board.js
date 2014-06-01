@@ -15,7 +15,7 @@ window.onload = function(){
 
   board.addEventListener("click", function(evt){
     var e = evt.target; //get the target element that was clicked
-    if(e.nodeName.toLowerCase() === "canvas"){ // only trigger canvas elements
+    if(e.nodeName.toLowerCase() === "canvas"){ // only trigger if a canvas element was clicked
         var canvas = document.getElementById(e.id);
         var context = canvas.getContext("2d");
 
@@ -51,8 +51,9 @@ window.onload = function(){
                 alert("Computer's next roll is " + computer_roll + "...Game over :(");
                 resetGame();
               } else { // if there exists a way to make the roll's sum...
-                sendMessage(randPraise()); // + "<br>New roll is " + computer_roll);
-                postDiceRoll(computer_roll);
+                sendMessage(randPraise()); // send encouragement 
+                postDiceRoll(computer_roll); // and new dice roll
+                
                 // reset for new roll, same game
                 possible_combinations = []; 
                 player_total = 0;
@@ -71,7 +72,7 @@ window.onload = function(){
     var x = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
     var y = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
     return x + y;
-  };
+  }
 
   function removeElement(arrayName,arrayElement){
     for(var i=0; i<arrayName.length;i++ ){ 
@@ -79,12 +80,12 @@ window.onload = function(){
         arrayName.splice(i,1); 
       }
     } 
-  };
+  }
 
   function sendMessage(mess){
     var messageBox = document.getElementById("messageBox");
     messageBox.innerHTML = mess;
-  };
+  }
 
   function postDiceRoll(num){
     var diceRollBox = document.getElementById("diceRoll");
@@ -95,77 +96,18 @@ window.onload = function(){
     var praise = ["Awesome!", "Good job!", "Knew you could do it!", "Sweet!", "You got this!", "Again! Again!", "Keep it up!", "Keep going!", "Easy, right?"];
     var rand = Math.floor(Math.random() * (praise.length));
     return praise[rand];
-  };
+  }
 
 
 
   function isGameOver(roll, player_moves_remaining){
-    var ways_to_fulfill_roll = getPossSums(roll);
+    var ways_to_fulfill_roll = addAllSubSums(roll);
     if (playerHasAMove(player_moves_remaining, ways_to_fulfill_roll)){
       return false; // game is not over
     } else {
       return true; // game is over
     }
   }
-
-
-  function getPossSums(sum){
-    
-    for (var i = 1; i < sum/2; i++){ 
-      possible_combinations.push([i, sum-i]);
-      addAllSubSums([i], sum-i);
-    }
-
-    possible_combinations.push([sum]); // can just play the number itself 
-
-    return possible_combinations;
-  };
-
-
-  function addAllSubSums(baggage, sum){
-    for (var j=1; j < sum/2; j++){
-      // if j is not in baggage and sum-j is not in baggage
-      if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
-        // add j and sum-j back to baggage
-        var new_array = baggage.concat(j, sum-j);
-        // and push all of that to possible_combinations
-
-        // if new_array is NOT a subArray of possible_combinations yet... 
-        if (!isSubArray(new_array,possible_combinations)){
-          possible_combinations.push(new_array);
-        }
-
-        var new_baggage = baggage.concat(j);
-        addAllSubSums(new_baggage, sum-j);
-      }
-    }
-
-  };
-
-
-  function sortArray(array){
-    return array.sort(function(a, b){return a-b});
-  };
-
-  function sortAllSubArrays(array){
-    for(var i = 0; i < array.length; i++){
-      array[i] = sortArray(array[i]);
-    }
-    return array;
-  };
-
-  function isSubArray (subArray, array) {
-    subArray = sortArray(subArray);
-    array = sortAllSubArrays(array);
-
-    for(var i = 0; i < array.length; i++) {
-      if(subArray.toString() === array[i].toString()){
-        return true;
-      }
-    }
-    return false;
-  };
-
 
   function playerHasAMove(player_moves_left, passing_moves){
     for(var i = 0; i < passing_moves.length; i++) {
@@ -180,7 +122,63 @@ window.onload = function(){
       }
     }
     return false; 
-  };
+  }
+
+  function addAllSubSums(sum, baggage){
+    // if baggage argument is undefined, make it []
+    // i.e. baggage is an optional argument with a default value of [] if undefined in function call
+    if (typeof baggage == 'undefined'){
+      baggage = [];
+      var firstRun = true;
+    }
+
+    for (var j=1; j < sum/2; j++){
+      // if j is not in baggage and sum-j is not in baggage
+      if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
+        // add j and sum-j back to baggage
+        var new_array = baggage.concat(j, sum-j);
+        // and push all of that to possible_combinations
+
+        // if new_array is NOT a subArray of possible_combinations yet... 
+        if (!isSubArray(new_array,possible_combinations)){
+          possible_combinations.push(new_array);
+        }
+
+        var new_baggage = baggage.concat(j);
+        addAllSubSums(sum-j, new_baggage);
+      }
+    }
+    if (firstRun == true) {
+      possible_combinations.push([sum]); // can just play the number itself 
+    }
+
+    return possible_combinations;
+  }
+
+
+  // Array manipulation helpers
+  function sortArray(array){
+    return array.sort(function(a, b){return a-b});
+  }
+
+  function sortAllSubArrays(array){
+    for(var i = 0; i < array.length; i++){
+      array[i] = sortArray(array[i]);
+    }
+    return array;
+  }
+
+  function isSubArray (subArray, array) {
+    subArray = sortArray(subArray);
+    array = sortAllSubArrays(array);
+
+    for(var i = 0; i < array.length; i++) {
+      if(subArray.toString() === array[i].toString()){
+        return true;
+      }
+    }
+    return false;
+  }
 
 
   function resetGame(){
@@ -204,7 +202,6 @@ window.onload = function(){
     sendMessage('New Game');
 
     computer_roll = rollTwoDie();
-    // sendMessage("Computer rolls a " + computer_roll);
     postDiceRoll(computer_roll);
 
     possible_combinations = [];
