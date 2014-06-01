@@ -53,7 +53,7 @@ window.onload = function(){
               } else { // if there exists a way to make the roll's sum...
                 sendMessage(randPraise()); // send encouragement 
                 postDiceRoll(computer_roll); // and new dice roll
-                
+
                 // reset for new roll, same game
                 possible_combinations = []; 
                 player_total = 0;
@@ -125,11 +125,13 @@ window.onload = function(){
   }
 
   function addAllSubSums(sum, baggage){
-    // if baggage argument is undefined, make it []
-    // i.e. baggage is an optional argument with a default value of [] if undefined in function call
+    // if baggage argument is undefined, this is our first run through
+    // so set baggage = []
+    // baggage is effectively an optional argument with a default value of [] if undefined in function call
     if (typeof baggage == 'undefined'){
       baggage = [];
-      var firstRun = true;
+      possible_combinations = [];
+      possible_combinations.push([sum]); // can just play the number itself 
     }
 
     for (var j=1; j < sum/2; j++){
@@ -147,9 +149,6 @@ window.onload = function(){
         var new_baggage = baggage.concat(j);
         addAllSubSums(sum-j, new_baggage);
       }
-    }
-    if (firstRun == true) {
-      possible_combinations.push([sum]); // can just play the number itself 
     }
 
     return possible_combinations;

@@ -33,7 +33,8 @@ function addAllSubSums(sum, baggage){
   // if baggage argument is undefined, make it []
   if (typeof baggage == 'undefined'){
     baggage = [];
-    var firstRun = true;
+    possible_combinations = [];
+    possible_combinations.push([sum]); // can just play the number itself 
   }
 
   for (var j=1; j < sum/2; j++){
@@ -52,9 +53,9 @@ function addAllSubSums(sum, baggage){
       addAllSubSums(sum-j, new_baggage);
     }
   }
-  if (firstRun == true) {
-    possible_combinations.push([sum]); // can just play the number itself 
-  }
+  // if (firstRun == true) {
+  //   possible_combinations.push([sum]); // can just play the number itself 
+  // }
 
   return possible_combinations;
 };
@@ -105,14 +106,12 @@ function playerHasAMove(player_moves_left, passing_moves){
 
 // print(playerHasAMove([3,4,5,10], [[1,2], [3]]));
 
-// print(getPossSums(10).join('\n'));
-
 print(isGameOver(11, [1,3,4]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
+print("huh");
 
-
-// print(addAllSubSums(15).join('\n'));
+print(addAllSubSums(9).join('\n'));
 
 
 
