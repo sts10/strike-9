@@ -7,7 +7,7 @@
 var possible_combinations = [];
 
 function isGameOver(roll, player_moves_remaining){
-  var ways_to_fulfill_roll = getPossSums(roll);
+  var ways_to_fulfill_roll = addAllSubSums(roll);
   if (playerHasAMove(player_moves_remaining, ways_to_fulfill_roll)){
     return false; // game is not over
   } else {
@@ -29,7 +29,14 @@ function getPossSums(sum){
 };
 
 
-function addAllSubSums(baggage, sum){
+function addAllSubSums(sum, baggage){
+  // baggage = typeof baggage !== 'undefined' ? baggage : [];
+
+  if (typeof baggage == 'undefined'){
+    baggage = [];
+    var firstRun = true;
+  }
+
   for (var j=1; j < sum/2; j++){
     // if j is not in baggage and sum-j is not in baggage
     if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
@@ -43,9 +50,14 @@ function addAllSubSums(baggage, sum){
       }
 
       var new_baggage = baggage.concat(j);
-      addAllSubSums(new_baggage, sum-j);
+      addAllSubSums(sum-j, new_baggage);
     }
   }
+  if (firstRun == true) {
+    possible_combinations.push([sum]); // can just play the number itself 
+  }
+
+  return possible_combinations;
 
 };
 
@@ -97,6 +109,12 @@ function playerHasAMove(player_moves_left, passing_moves){
 
 // print(getPossSums(10).join('\n'));
 
-print(isGameOver(3, [1,3,4,5,6,7,8]));
+print(isGameOver(11, [1,3,4]));
 
 // => [[1,9],[2,8],[3,7],[4,6], [1,4,5], [1,6,3]
+
+
+// print(addAllSubSums(15).join('\n'));
+
+
+
