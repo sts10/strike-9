@@ -137,7 +137,7 @@ window.onload = function(){
     for (var j=1; j < sum/2; j++){
       // if j is not in baggage and sum-j is not in baggage
       if (baggage.indexOf(j) == -1 && baggage.indexOf(sum-j) == -1){
-        // add j and sum-j back to baggage to make our new array we may add as a possible_combination
+        // add j and sum-j to baggage to make our new array we may add as a possible_combination
         var new_array = baggage.concat(j, sum-j);
 
         // if new_array is NOT a subArray of possible_combinations yet... 
