@@ -101,7 +101,7 @@ window.onload = function(){
 
 
   function isGameOver(roll, player_moves_remaining){
-    var ways_to_fulfill_roll = addAllSubSums(roll);
+    var ways_to_fulfill_roll = getAllPossAddends(roll);
     if (playerHasAMove(player_moves_remaining, ways_to_fulfill_roll)){
       return false; // game is not over
     } else {
@@ -124,7 +124,7 @@ window.onload = function(){
     return false; 
   }
 
-  function addAllSubSums(sum, baggage){
+  function getAllPossAddends(sum, baggage){
     // if baggage argument is undefined, this is our first run through
     // so set baggage = []
     // baggage is effectively an optional argument with a default value of [] if undefined in function call
@@ -147,7 +147,7 @@ window.onload = function(){
 
         // prep new_baggage and send new sum and baggage back to top of the function
         var new_baggage = baggage.concat(j);
-        addAllSubSums(sum-j, new_baggage);
+        getAllPossAddends(sum-j, new_baggage);
       }
     }
 
