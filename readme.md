@@ -7,7 +7,7 @@
 [Live demo](https://strike9.netlify.app/) 
 <!-- [View live demo](http://samschlinkert.com/strike9/) -->
 
-[Blog post about some of the game-over array checking](http://sts10.github.io/blog/2014/05/30/strike-9-game/)
+Read about my process in "about.markdown"
 
 ## Rules of the Game:
 
@@ -15,9 +15,8 @@
 
 2) The computer rolls two six-sided dice and presents the TOTAL to the player.
 
-3) The player then may remove ANY combination of one or more numbers from his or her board that add up to TOTAL. 
+3) The player then may remove ANY combination of one or more numbers from his or her board that add up to TOTAL. For example, if computer rolls a TOTAL of  9, player can choose to remove any of the following combinations:  [9], [1,8], [2,7], [1,2,6], [2,3,4], etc.  
 
-For example, if computer rolls a TOTAL of  9, player can choose to remove any of the following combinations:  [9], [1,8], [2,7], [1,2,6], [2,3,4], etc.  
 4) The numbers so chosen are then permanently removed from play. 
 
 5) Once this is done, the computer rolls again and play continues.
