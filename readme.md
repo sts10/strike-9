@@ -1,12 +1,15 @@
-## STRIKE NINE (one player vs. computer)
+## Strike Nine
 
-### A JavaScript implementation of "Strike 9". 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fcee051a-3318-419a-a108-6dd5513be00f/deploy-status)](https://app.netlify.com/sites/strike9/deploys)
 
-[View live demo](http://samschlinkert.com/strike9/)
+**A JavaScript implementation of a game called "Strike 9"**
+
+[Live demo](https://strike9.netlify.app/) 
+<!-- [View live demo](http://samschlinkert.com/strike9/) -->
 
 [Blog post about some of the game-over array checking](http://sts10.github.io/blog/2014/05/30/strike-9-game/)
 
-Rules of the Game:
+## Rules of the Game:
 
 1) The player has a game board with all numbers from 1-9 visible (inclusive). 
 
