@@ -10,60 +10,61 @@ window.onload = function(){
 
   resetGame();
 
- 
+
   var board = document.getElementById("board");
 
   board.addEventListener("click", function(evt){
     var e = evt.target; //get the target element that was clicked
     if(e.nodeName.toLowerCase() === "canvas"){ // only trigger if a canvas element was clicked
-        var canvas = document.getElementById(e.id);
-        var context = canvas.getContext("2d");
+      var canvas = document.getElementById(e.id);
+      var context = canvas.getContext("2d");
 
-        var box_index = e.id - 1;
+      var box_index = e.id - 1;
 
-        if (board_array[box_index] == 1) {
-            console.log("You already have chosen that box!");
-        } else {
-          // make box white
-          context.fillStyle = "#fff";
-          context.fillRect(0,0,90,90);
+      if (board_array[box_index] == 1) {
+        console.log("You already have chosen that box!");
+      } else {
+        // make box white
+        context.fillStyle = "#fff";
+        context.fillRect(0,0,90,90);
 
-          // update both tracking arrays
-          board_array[box_index] = 1; 
-          removeElement(player_moves_remaining, e.id);
+        // update both tracking arrays
+        board_array[box_index] = 1; 
+        removeElement(player_moves_remaining, e.id);
 
-          // update player_total for this turn
-          player_total = player_total + box_index + 1;
+        // update player_total for this turn
+        player_total = player_total + box_index + 1;
 
-          // if on this turn the player successfully summed to the dice roll
-          if (player_total == computer_roll){
+        // if on this turn the player successfully summed to the dice roll
+        if (player_total == computer_roll){
 
-            // check if player has won
-            if (board_array.indexOf(0) == -1){   
-              alert("Oh hey, You won!");
-              resetGame();
-            } else { //still playing
-              // re-roll dice. 
-              computer_roll = rollTwoDie();
+          // check if player has won
+          if (board_array.indexOf(0) == -1){   
+            sendMessage("You won!");
+            setTimeout(function(){ resetGame(); }, 2000);
+          } else { //still playing
+            // re-roll dice. 
+            computer_roll = rollTwoDie();
 
-              // with new dice roll, we can already figure out if the game is over
-              if (isGameOver(computer_roll, player_moves_remaining)){
-                alert("Computer's next roll is " + computer_roll + "...Game over :(");
-                resetGame();
-              } else { // if there exists a way to make the roll's sum...
-                sendMessage(randPraise()); // send encouragement 
-                postDiceRoll(computer_roll); // and new dice roll
+            // with new dice roll, we can already figure out if the game is over
+            if (isGameOver(computer_roll, player_moves_remaining)){
+              postDiceRoll(computer_roll); 
+              sendMessage("Game Over");
+              setTimeout(function(){ resetGame(); }, 2000);
+            } else { // if there exists a way to make the roll's sum...
+              sendMessage(randPraise()); // send encouragement 
+              postDiceRoll(computer_roll); // and new dice roll
 
-                // reset for new roll, same game
-                possible_combinations = []; 
-                player_total = 0;
-              }
+              // reset for new roll, same game
+              possible_combinations = []; 
+              player_total = 0;
             }
-          } else if (player_total > computer_roll){  // if player went above the dice total...
-            alert("You exceeded the computer's roll...Game Over");
-            resetGame();
           }
+        } else if (player_total > computer_roll){  // if player went above the dice total...
+          sendMessage("Game Over");
+          setTimeout(function(){ resetGame(); }, 2000);
         }
+      }
     }
   });
 
