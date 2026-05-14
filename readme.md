@@ -24,7 +24,3 @@ Read about my process in "about.markdown"
 PLAYER WINS if he or she removes all their numbers from the board.
 
 PLAYER LOSES if the computer rolls a total that the player cannot remove with the numbers remaining on their board.
-
-## How I made it 
-
-Here's [a blog post](https://sts10.github.io/2014/05/30/strike-9-game.html) I wrote about writing this code.
